@@ -6,14 +6,8 @@
     "type": "library",
     "license": "MIT",
     "version": "1.0.0-dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/p0vidl0/simple_html_dom"
-        }
-    ],
     "require": {
-        "p0vidl0/simple_html_dom": "*@dev"        
+        "p0vidl0/simple-html-dom": "*@dev"        
     },
     "autoload": {
         "classmap":["SiteLinks.php"],
