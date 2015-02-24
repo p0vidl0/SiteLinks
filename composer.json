@@ -7,7 +7,7 @@
     "license": "MIT",
     "version": "1.0.0-dev",
     "require": {
-        "p0vidl0/simple-html-dom": "*@dev"        
+        "p0vidl0/simple-html-dom": "*"        
     },
     "autoload": {
         "classmap":["SiteLinks.php"],
