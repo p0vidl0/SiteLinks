@@ -217,4 +217,11 @@ private $maxLevel = 20;
         echo "memory used: " . round(memory_get_usage()/($memDivider),0) . "Mb (" . round(memory_get_usage(true)/($memDivider),0) ."Mb)\n";
         echo "time used: " . $timeUsed . " sec.\n";
     }
+    
+    function checkLink($url)
+    {
+        $response = get_headers($url, 1)[0];
+        $code = substr($response,9,3);
+        return [$code,$response];
+    }
 }
