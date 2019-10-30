@@ -43,9 +43,7 @@ private $maxLevel = 20;
         }
         // Отключаемся
         curl_close($this->ch);
-//        var_dump($text);
         $dom = str_get_html($text);
-//        var_dump($dom);
         return $dom;
     }
 
@@ -64,7 +62,6 @@ private $maxLevel = 20;
             '#',
             '.html/',
             '/tag/',
-    //        '?',
             'wp-admin',
             '/component/',
             ];
@@ -80,8 +77,6 @@ private $maxLevel = 20;
 
     private function getUrls()
     {
-    //    echo "get new link: " . $this->c . "\n";
-    //    $html = file_get_html($this->c);
         $html = $this->readUrl($this->c);
         if ($html == false || $html == null)
         {
@@ -89,10 +84,6 @@ private $maxLevel = 20;
         }
         $as = $html->find('a');
         echo "($this->level) link: " . $this->c . " internal links count: " . count($as) . "\n";
-    //    if ($this->level === 1)
-    //    {
-    //        var_dump($html->innertext);
-    //    }
         if (count($as))
         {   
             $this->level2 = 0;
@@ -117,10 +108,6 @@ private $maxLevel = 20;
                         {
                             echo "a href is only '/': $href\n";
                         }
-    //                    if (in_array($href,$this->ru) != false)
-    //                    {
-    //                        echo "already in \$this->ru(" . count($this->ru) . "): $href\n";
-    //                    }
                         if (in_array($href,$this->temporary) != false)
                         {
                             echo "already in \$this->temporary: $href\n";
@@ -134,7 +121,6 @@ private $maxLevel = 20;
                 $this->level2++;
             }
             echo "\$this->temporary at level ($this->level): \n";
-    //        var_dump($this->temporary);
             while (count($this->temporary[$this->level]))
             {
                 $t = array_pop($this->temporary[$this->level]);
@@ -187,17 +173,9 @@ private $maxLevel = 20;
                 }
             }
         }
-
-        //foreach (array_keys($this->ru) as $key)
-        //{
-        //    if (strpos($this->ru[$key],'.html') === false)
-        //    {
-        //        unset($this->ru[$key]);
-        //    }
-        //}
+        
         sort($this->result);
 
-        //var_dump($this->ru);
         foreach (array_keys($this->result) as $key)
         {
             echo "'" . $this->result[$key] . "'\n";
@@ -206,8 +184,6 @@ private $maxLevel = 20;
         date_default_timezone_set("Europe/Moscow");
         $fileName = date("Y-m-d-H-i-s") . "-res.list";
         file_put_contents($fileName,implode("\n", $this->result));
-
-        //$this->ru = array_unique($this->ru);
 
         $timeUsed = time() - $startTime;
         $memDivider = 1024*1024;
